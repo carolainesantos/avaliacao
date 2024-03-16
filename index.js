@@ -10,11 +10,15 @@ app.get("/usuario", (req, res) => {
   res.json(usuarios);
 });
 
-//TODO: Fazer outro get by id
-app.get("/autorId", (req, res) => {
+app.get("/usuario/:id", (req, res) => {
   const { id } = req.params;
-  const autor = usuarios.find((autor) => autor.id === Number(id));
-  res.json(autor);
+  const usuario = usuarios.find((usuario) => usuario.id === Number(id));
+
+  if (!usuario) {
+    res.status(404).json({ error: "Usuario não encontrado" });
+  }
+
+  res.json(usuario);
 });
 
 app.post("/usuario", (req, res) => {
@@ -22,11 +26,8 @@ app.post("/usuario", (req, res) => {
 
   let id = 0;
 
-  // TODO: não deixar cadastrar usuario vazio
-  if (usuarios.length === 0) {
-    id = 1;
-  } else {
-    id = usuarios[usuarios.length - 1].id;
+  if (nome === "" || email === "") {
+    return res.status(400).json({ error: "Nome ou email vazio" });
   }
 
   for (const usuario of usuarios) {
@@ -49,7 +50,6 @@ app.put("/usuario/:id", (req, res) => {
   const { id } = req.params;
   const { nome, email } = req.body;
 
-  // TODO: não deixar atualizar usuario vazio
   if (nome === "" || email === "") {
     return res.status(400).json({ error: "Nome ou email vazio" });
   }
@@ -84,6 +84,35 @@ app.delete("/usuario/:id", (req, res) => {
   res.status(204).send();
 });
 
+// Inicio de Postagens
+
+app.get("/postagem/autor/:id", (req, res) => {
+  const { id } = req.params;
+  /* Para conseguir pegar todas as postagens 
+  de 1 autor eu precisei usar o filter pois 
+  ele pega todos os elementos que correspondem aquele filtro*/
+  const postagem = postagens.filter(
+    (postagem) => postagem.autorId === Number(id)
+  );
+
+  if (postagem.length === 0) {
+    res.status(404).json({ error: "Não existem postagens pra esse autor" });
+  }
+
+  res.json(postagem);
+});
+
+app.get("/postagem/:id", (req, res) => {
+  const { id } = req.params;
+  const postagem = postagens.find((postagem) => postagem.id === Number(id));
+
+  if (!postagem) {
+    res.status(404).json({ error: "Postagem não encontrada" });
+  }
+
+  res.json(postagem);
+});
+
 app.get("/postagem", (req, res) => {
   res.json(postagens);
 });
@@ -92,13 +121,14 @@ app.post("/postagem", (req, res) => {
   const { autorId, titulo, conteudo } = req.body;
   let id = 0;
 
-  // TODO: não deixar cadastrar postagem vazia:
   if (titulo === "" || conteudo === "") {
     return res.status(400).json({ error: "Titulo ou conteudo vazio" });
   }
 
-  // TODO: verificar se o autor existe no array de usuarios
-  const autor = usuarios.find((autor) => autor.id === Number(autorId));
+  const autor = usuarios.find((usuario) => usuario.id === Number(autorId));
+  if (!autor) {
+    return res.status(400).json({ error: "Autor não encontrado" });
+  }
 
   // Verifica o maior id para o novo postagem. Se não houver nenhum id, o id será 1. Se houver, o id será o maior + 1.
   for (const postagem of postagens) {
@@ -134,6 +164,11 @@ app.delete("/postagem/:id", (req, res) => {
 app.put("/postagem/:id", (req, res) => {
   const { id } = req.params;
   const { autorId, titulo, conteudo } = req.body;
+
+  const autor = usuarios.find((usuario) => usuario.id === Number(autorId));
+  if (!autor) {
+    return res.status(400).json({ error: "Autor não encontrado" });
+  }
 
   const index = postagens.findIndex((p) => p.id === Number(id));
 
