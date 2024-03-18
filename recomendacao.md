@@ -9,9 +9,9 @@
 
 🧷 Funcionalidades:
 
-1. Criar, atualizar, visualizar e excluir usuários.
-2. Criar, atualizar, visualizar e excluir postagens.
-3. Listar todas as postagens de um usuário específico.
+1. Criar, atualizar, visualizar e excluir usuários.✅
+2. Criar, atualizar, visualizar e excluir postagens.✅
+3. Listar todas as postagens de um usuário específico.✅
 
 🔻Passos sugeridos:
 
@@ -29,3 +29,7 @@
 - Simule a geração de IDs únicos para as entidades.
 - Ao criar ou atualizar uma postagem, verifique se o autorId é válido, ou seja, se refere a um usuário existente.
 - Use os métodos HTTP corretos para cada tipo de operação (GET, POST, PUT, DELETE).
+
+📌💭 Implementações Futuras
+
+- Adicionar integração com banco de dados.
