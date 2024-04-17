@@ -52,10 +52,10 @@ src |** api |** config |** controllers |** models |** index.js |** package.json
 
 ⟫ Passos sugeridos:
 
-→ Converter a estrutura de Usuário para MVC.<br/>
-→ Converter a estrutura de Postagens para MVC.<br/>
-→ Testar as rotas usando ferramentas como Postman ou curl.<br/>
-→ Integrar as entidades no banco de dados.<br/>
-→ Testar as rotas usando ferramentas como Postman ou curl e verificar o banco de dados.<br/>
-→ Aplicar um middleware de validação as rotas de Postagens e as rotas de alteração, listagem e deleção de Usuários.<br/>
-→ Testar as rotas usando ferramentas como Postman ou curl.
+• Converter a estrutura de Usuário para MVC.
+• Converter a estrutura de Postagens para MVC.
+• Testar as rotas usando ferramentas como Postman ou curl.
+• Integrar as entidades no banco de dados.
+• Testar as rotas usando ferramentas como Postman ou curl e verificar o banco de dados.
+• Aplicar um middleware de validação as rotas de Postagens e as rotas de alteração, listagem e deleção de Usuários.
+• Testar as rotas usando ferramentas como Postman ou curl.
