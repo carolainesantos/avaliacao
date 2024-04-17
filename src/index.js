@@ -1,5 +1,5 @@
 const express = require("express");
-const database = require("./src/config/database");
+const database = require("./config/database");
 const UsuarioApi = require("./src/api/UsuarioApi");
 const PostagemApi = require("./src/api/PostagemApi");
 
@@ -7,14 +7,14 @@ const app = express();
 const PORT = 3000;
 app.use(express.json());
 
-// Rotas de usuários
+// Rotas usuários
 const usuarioApi = new UsuarioApi();
 app.get("/usuarios", usuarioApi.listarUsuario);
 app.post("/usuarios", usuarioApi.criarUsuario);
 app.put("/usuarios/:idUsuario", usuarioApi.alterarUsuario);
 app.delete("/usuarios/:idUsuario", usuarioApi.deletarUsuario);
 
-// Rotas de postagens
+// Rotas postagens
 const postagemApi = new PostagemApi();
 app.get("/postagens", postagemApi.listarPost);
 app.post("/postagens", postagemApi.criarPost);
