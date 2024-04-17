@@ -50,12 +50,12 @@ src |** api |** config |** controllers |** models |** index.js |** package.json
 
 • index.js - Arquivo principal da aplicação, onde o servidor será inicializado.
 
-⟫ Passos sugeridos:
+💡 Passos sugeridos:
 
-• Converter a estrutura de Usuário para MVC.
-• Converter a estrutura de Postagens para MVC.
-• Testar as rotas usando ferramentas como Postman ou curl.
-• Integrar as entidades no banco de dados.
-• Testar as rotas usando ferramentas como Postman ou curl e verificar o banco de dados.
-• Aplicar um middleware de validação as rotas de Postagens e as rotas de alteração, listagem e deleção de Usuários.
-• Testar as rotas usando ferramentas como Postman ou curl.
+1. Converter a estrutura de Usuário para MVC.
+2. Converter a estrutura de Postagens para MVC.
+3. Testar as rotas usando ferramentas como Postman ou curl.
+4. Integrar as entidades no banco de dados.
+5. Testar as rotas usando ferramentas como Postman ou curl e verificar o banco de dados.
+6. Aplicar um middleware de validação as rotas de Postagens e as rotas de alteração, listagem e deleção de Usuários.
+7. Testar as rotas usando ferramentas como Postman ou curl.
