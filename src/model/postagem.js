@@ -1,4 +1,5 @@
 const database = require("../config/database");
+const usuario = require("./usuario");
 
 class Postagem {
   constructor() {
@@ -14,13 +15,14 @@ class Postagem {
       conteudo: {
         type: database.Sequelize.STRING,
       },
-      id: {
+      idUsuario: {
         type: database.Sequelize.INTEGER,
         foreignKey: true,
         references: {
-            model: Usuario,
-            key: 'id'
+          model: usuario,
+          key: "idUsuario",
         },
+      },
     });
   }
 }
