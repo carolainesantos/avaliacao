@@ -1,7 +1,7 @@
 const express = require("express");
 const database = require("./src/config/database");
-const UsuarioApi = require("./src/api/UsuarioApi");
-const PostagemApi = require("./src/api/PostagemApi");
+const UsuarioApi = require("./src/api/usuario");
+const PostagemApi = require("./src/api/postagem");
 
 const app = express();
 const PORT = 3000;

@@ -1,4 +1,4 @@
-const PostagemController = require("../controller/postagem");
+const PostagemController = require("../controllers/postagem");
 
 class PostagemApi {
   async criarPostagem(req, res) {

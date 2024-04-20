@@ -1,4 +1,4 @@
-const UserController = require("../controller/usuario");
+const UserController = require("../controllers/usuario");
 
 class UsuarioApi {
   async criarUsuario(req, res) {
