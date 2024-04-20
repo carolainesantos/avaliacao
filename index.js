@@ -1,5 +1,5 @@
 const express = require("express");
-const database = require("./config/database");
+const database = require("./src/config/database");
 const UsuarioApi = require("./src/api/UsuarioApi");
 const PostagemApi = require("./src/api/PostagemApi");
 
