@@ -1,31 +1,38 @@
 const express = require("express");
 const database = require("./src/config/database");
-const UsuarioApi = require("./src/api/usuario");
-const PostagemApi = require("./src/api/postagem");
+const UserApi = require("./src/api/user");
+const PostApi = require("./src/api/post");
+// const authMiddleware = require("./src/middleware/auth");
 
 const app = express();
 const PORT = 3000;
 app.use(express.json());
 
 // Rotas usuários
-const usuarioApi = new UsuarioApi();
-app.get("/usuarios", usuarioApi.listarUsuario);
-app.post("/usuarios", usuarioApi.criarUsuario);
-app.put("/usuarios/:idUsuario", usuarioApi.alterarUsuario);
-app.delete("/usuarios/:idUsuario", usuarioApi.deletarUsuario);
+const userApi = new UserApi();
+app.post("/login", userApi.login);
+app.get("/users", userApi.listarUsuarios);
+
+app.use(userApi.validarToken);
+app.get("/user/:id", userApi.listarUsuario);
+app.post("/users", userApi.criarUsuario);
+app.put("/users/:id", userApi.alterarUsuario);
+app.delete("/users/:id", userApi.deletarUsuario);
 
 // Rotas postagens
-const postagemApi = new PostagemApi();
-app.get("/postagens", postagemApi.listarPost);
-app.post("/postagens", postagemApi.criarPost);
-app.put("/postagens/:idPost", postagemApi.alterarPost);
-app.delete("/posts/:idPost", postagemApi.deletarPost);
+const postApi = new PostApi();
+app.get("/posts", postApi.listarPostagens);
+app.get("/posts/:idPost", postApi.listarPostagem);
+app.get("/posts/user/:id", postApi.listarPostagensUsuario);
+app.post("/posts", postApi.criarPostagem);
+app.put("/posts/:idPost", postApi.alterarPostagem);
+app.delete("/posts/:idPost", postApi.deletarPostagem);
 
 database
   .authenticate()
   .then(() => {
     console.log("Database connection has been established successfully.");
-    return database.sync({ force: true });
+    return database.sync({ force: false });
   })
   .then(() => {
     app.listen(3000, () => {
