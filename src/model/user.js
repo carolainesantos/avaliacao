@@ -1,8 +1,8 @@
 const database = require("../config/database");
 
-class Usuario {
+class User {
   constructor() {
-    this.model = database.define("usuario", {
+    this.model = database.define("user", {
       idUsuario: {
         type: database.Sequelize.INTEGER,
         primaryKey: true,
@@ -21,4 +21,4 @@ class Usuario {
   }
 }
 
-module.exports = new Usuario().model;
+module.exports = new User().model;

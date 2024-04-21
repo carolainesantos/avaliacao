@@ -1,9 +1,9 @@
 const database = require("../config/database");
-const usuario = require("./usuario");
+const user = require("./user");
 
-class Postagem {
+class Post {
   constructor() {
-    this.model = database.define("postagem", {
+    this.model = database.define("post", {
       idPost: {
         type: database.Sequelize.INTEGER,
         primaryKey: true,
@@ -19,7 +19,7 @@ class Postagem {
         type: database.Sequelize.INTEGER,
         foreignKey: true,
         references: {
-          model: usuario,
+          model: user,
           key: "idUsuario",
         },
       },
@@ -27,4 +27,4 @@ class Postagem {
   }
 }
 
-module.exports = new Postagem().model;
+module.exports = new Post().model;
