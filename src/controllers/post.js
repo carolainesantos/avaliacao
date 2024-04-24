@@ -7,9 +7,9 @@ class PostController {
       conteudo === undefined ||
       idUsuario === undefined
     ) {
-      throw new Error("Titulo e conteudo são obrigatórios");
+      throw new Error("Titulo, conteudo e IDUsuario são obrigatórios");
     }
-    const post = await Post.create({ titulo, conteudo, idUsuario });
+    const post = await Post.create(titulo, conteudo, idUsuario);
 
     return post;
   }
@@ -39,7 +39,7 @@ class PostController {
 
     const post = await this.buscarPorId(idPost);
     post.titulo = titulo;
-    user.conteudo = conteudo;
+    post.conteudo = conteudo;
     post.save();
 
     return post;

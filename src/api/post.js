@@ -2,12 +2,13 @@ const PostController = require("../controllers/post");
 
 class PostApi {
   async criarPostagem(req, res) {
-    const titulo = req.body.titulo;
-    const conteudo = req.body.conteudo;
+    const titulo = req.body;
+    const conteudo = req.body;
+    const idUsuario = req.body;
     const controller = new PostController();
 
     try {
-      const post = await controller.criarPostagem(titulo, conteudo);
+      const post = await controller.criarPostagem(idUsuario, titulo, conteudo);
       return res.status(201).send(post);
     } catch (error) {
       return res.status(400).send({ error: error.message });

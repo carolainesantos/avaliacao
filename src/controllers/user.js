@@ -65,16 +65,16 @@ class UserController {
     return User.findAll();
   }
 
-  // pega parametros que foram informados no postman
+  // Pega parametros que foram informados no postman
   async login(email, senha) {
     if (!email || !senha) {
-      throw new Error("Email ou Senha inválido");
+      throw new Error("Email ou senha inválido");
     }
 
     const user = await User.findOne({ where: { email } });
 
     if (!user) {
-      throw new Error("Email ou Senha inválido");
+      throw new Error("Email ou senha inválido");
     }
 
     // Compara a senha informada com a senha do usuário

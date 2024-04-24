@@ -1,5 +1,7 @@
 const database = require("../config/database");
 
+/* Inicio da classe pra criação do 
+   modelo no banco de dados */
 class User {
   constructor() {
     this.model = database.define("user", {
