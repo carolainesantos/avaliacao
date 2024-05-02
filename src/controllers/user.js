@@ -45,9 +45,10 @@ class UserController {
 
     user.nome = nome;
     user.email = email;
-    user.senha = senha;
-    user.save();
+    const senhaCriptografada = await bcrypt.hash(senha, saltRounds);
+    user.senha = senhaCriptografada;
 
+    user.save();
     return user;
   }
 
